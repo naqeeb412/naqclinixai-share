@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: transparent;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 16px;
+  background: #222;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+</style>
+</head>
+
+<body>
+
+<button onclick="shareSite()">📤 مشاركة الموقع</button>
+
+<script>
+async function shareSite() {
+
+  const data = {
+    title: "NAQclinixAI BOOKS",
+    text: "Books by Dr. Ali Al-Naqeeb",
+    url: "https://sites.google.com/view/naqclinixaibooks/الصفحة-الرئيسية/"
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(data);
+    } catch (e) {
+      // المستخدم أغلق نافذة المشاركة
+    }
+  } else {
+    try {
+      await navigator.clipboard.writeText(data.url);
+      alert("تم نسخ رابط الموقع.");
+    } catch (e) {
+      alert(data.url);
+    }
+  }
+}
+</script>
+
+</body>
+</html>
